@@ -6,7 +6,7 @@ module.exports = function (app) {
             req.i18n.changeLanguage('en');
         else if (req.query.lan == 'cn')
             req.i18n.changeLanguage('zh');
-        else
+        else if(req.query.lan == 'es')
             req.i18n.changeLanguage('es');
         console.log(req.t('HI'));
         res.render("home.ejs", { "name": "George" });

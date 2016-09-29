@@ -8,6 +8,7 @@ app.set('view engine', 'ejs');
 
 i18next.use(Backend).use(middleware.LanguageDetector).init({
     preload: ['en', 'es', 'zh'],
+    fallbackLng: 'en', // default language
     debug: false,
     backend: {
         loadPath: path.join(__dirname, '/locales/{{lng}}/translation.json'),
