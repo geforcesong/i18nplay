@@ -1,12 +1,12 @@
 var express = require('express');
 var i18next = require('i18next');
-var middleware = require('i18next-express-middleware');
-var Backend = require('i18next-node-fs-backend');
+var i18nextMiddleware = require('i18next-express-middleware');
+var i18nextBackend = require('i18next-node-fs-backend');
 var path = require('path');
 var app = express();
 app.set('view engine', 'ejs');
 
-i18next.use(Backend).use(middleware.LanguageDetector).init({
+i18next.use(i18nextBackend).use(i18nextMiddleware.LanguageDetector).init({
     preload: ['en', 'es', 'zh'],
     fallbackLng: 'en', // default language
     debug: false,
@@ -15,7 +15,7 @@ i18next.use(Backend).use(middleware.LanguageDetector).init({
         getAsync: false
     }
 });
-app.use(middleware.handle(i18next));
+app.use(i18nextMiddleware.handle(i18next));
 
 require('./routes.js')(app);
 
