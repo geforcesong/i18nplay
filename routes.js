@@ -11,7 +11,6 @@ module.exports = function (app) {
             req.i18n.changeLanguage('es');
         console.log( `current language is: ${req.i18n.language}` );
 
-        
         console.log(req.t('HI'));
         res.render("home.ejs", { "name": "George" });
     });
