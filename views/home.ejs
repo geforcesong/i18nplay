@@ -3,9 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <script src='/js/i18next.min.js'></script>
 </head>
 <body>
-    <h1>This is my title</h1>
+    <h1 onClick="hello();">This is my title</h1>
     <%=t('HI')%> <%=name%>
 </body>
+
+<script type="text/javascript">
+function hello() {
+    window.i18next.init({
+        lng: 'cn',
+        resources: {
+            en: {
+                translation: {
+                    "key": "hello world"
+                }
+            },
+            cn: {
+                translation: {
+                    "key": "你好，世界！"
+                }
+            }
+        }
+    },(err, t)=>{
+        alert(t('key'));
+        window.i18next.changeLanguage('en');
+        alert(t('key'));
+    })
+}
+</script>
 </html>

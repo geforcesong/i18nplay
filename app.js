@@ -16,6 +16,7 @@ i18next.use(i18nextBackend).init({
     }
 });
 app.use(i18nextMiddleware.handle(i18next));
+app.use(express.static('public'));
 
 require('./routes.js')(app);
 
