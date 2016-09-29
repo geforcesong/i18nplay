@@ -6,7 +6,7 @@ var path = require('path');
 var app = express();
 app.set('view engine', 'ejs');
 
-i18next.use(i18nextBackend).use(i18nextMiddleware.LanguageDetector).init({
+i18next.use(i18nextBackend).init({
     preload: ['en', 'es', 'zh'],
     fallbackLng: 'en', // default language
     debug: false,
