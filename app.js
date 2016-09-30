@@ -7,7 +7,7 @@ var app = express();
 app.set('view engine', 'ejs');
 
 i18next.use(i18nextBackend).init({
-    preload: ['en', 'es', 'zh'],
+    preload: ['en', 'es', 'cn'],
     fallbackLng: 'en', // default language
     debug: false,
     backend: {

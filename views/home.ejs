@@ -4,16 +4,29 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <script src='/js/i18next.min.js'></script>
+    <script src='/js/ejs.min.js'></script>
 </head>
 <body>
     <h1 onClick="hello();">This is my title</h1>
     <%=t('HI')%> <%=name%>
+    <br>
+    <br>
+    <button onclick="loadEjs();">Load EJS</button>
+
+    <div id="content"></div>
+
+    <br>
+    <br>
+    <br>
+    Current language is: <%=language%>
+    <input type="hidden" value="<%=language%>">
 </body>
 
 <script type="text/javascript">
-function hello() {
+
+window.onload = function(){
     window.i18next.init({
-        lng: 'cn',
+        lng: '<%=language%>',
         resources: {
             en: {
                 translation: {
@@ -24,13 +37,32 @@ function hello() {
                 translation: {
                     "key": "你好，世界！"
                 }
+            },
+            es:{
+                translation: {
+                    "key": "Hola, mundo！"
+                }
             }
         }
     },(err, t)=>{
-        alert(t('key'));
-        window.i18next.changeLanguage('en');
-        alert(t('key'));
+        //window.i18next.changeLanguage('en');
     })
+}
+
+function hello() {
+    alert(window.i18next.t('key'));
+}
+
+function loadEjs(){
+    alert(window.i18next.t('key'));
+    var html = new EJS({
+                url: "/blogcard.ejs"
+            }).render({
+                title: "hello ejs title",
+                t: window.i18next.t
+            }) ;
+
+    document.getElementById('content').innerHTML = html;
 }
 </script>
 </html>

@@ -6,12 +6,12 @@ module.exports = function (app) {
         if (req.query.lan == 'en')
             req.i18n.changeLanguage('en');
         else if (req.query.lan == 'cn')
-            req.i18n.changeLanguage('zh');
+            req.i18n.changeLanguage('cn');
         else if(req.query.lan == 'es')
             req.i18n.changeLanguage('es');
         console.log( `current language is: ${req.i18n.language}` );
 
         console.log(req.t('HI'));
-        res.render("home.ejs", { "name": "George" });
+        res.render("home.ejs", { "name": "George", "language":req.i18n.language });
     });
 }
