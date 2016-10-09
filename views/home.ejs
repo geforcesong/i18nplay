@@ -58,8 +58,8 @@ function loadEjs(){
     var html = new EJS({
                 url: "/blogcard.ejs"
             }).render({
-                title: "hello ejs title",
-                t: window.i18next.t
+                title: "hello from ejs",
+                t: window.i18next.t.bind(window.i18next)
             }) ;
 
     document.getElementById('content').innerHTML = html;
